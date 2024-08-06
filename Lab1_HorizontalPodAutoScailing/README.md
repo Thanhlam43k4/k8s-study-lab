@@ -31,6 +31,10 @@ In this lab, we will configure the Horizontal Pod Autoscaler (HPA) to automatica
             
                 minikube addons enable metrics-server
 
+   -   Metrics-Server Pod in minikube
+
+   <img align = "center" alt = "coding" width = "600" src = "https://blogger.googleusercontent.com/img/a/AVvXsEjeDfFvG4jlRM8Z1Z47N6jKE3aHGowghBU6tsYY-DdbXDOgcv0RpxXVajXepB1AHfKfjv-f46ZHmO6W3tQ-jYQEKNQcql_cEbBFJE8q2588EqEEEzNC1AZBg3V8KJNTDm-zzL6GmFK6v5Wl1BbyS3BR9AfAfttoESjekFR8A6pwGgUFqoGOnqvuGXcLGXXF">  
+   
 ### 2. Configure Horizontal Pod Autoscaler
 
 2.1 **Set Up HPA:**
