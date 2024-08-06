@@ -44,6 +44,10 @@ In this lab, we will configure the Horizontal Pod Autoscaler (HPA) to automatica
 
             kubectl autoscale deployment frontend-deploy --cpu-percent=50 --min=1 --max=5
 
+   - By Manifest File
+
+   <img align = "center" alt = "coding" width = "600" src = "https://blogger.googleusercontent.com/img/a/AVvXsEhF1xnqXcP5I5RHQRRwFMiziHcFWhF8A6xvyK6dgvepC3PHtiFgiA5mzmZuRL2tePr2iWKT7mmn0EEB4wBaV1KfJ00VpNlaKJq9LhOKPzjdoGnA1FfmV3NhRuj56HOA_yXXRaq1d34c0zycU0qMmWtmh_3hVgrbZQkBTaz6Jyy4Rho_oFz69mVRJFpqZymh">
+   
 ### 3. Generate Load to Trigger Scaling
 
 3.1 **Load Generation:**
