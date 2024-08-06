@@ -55,8 +55,13 @@ In this lab, we will configure the Horizontal Pod Autoscaler (HPA) to automatica
 3.2 **Monitor HPA and Scaling:**
    - Monitor the HPA metrics and the number of pods to observe how the system scales up or down in response to the load.
 
-   -After Load Generator Active
+   -After Load Generator Active ( Scale Up From 1 Pod -> 2 Pods)
+   
    <img align = "center" alt = "coding" width = "600" src = "https://blogger.googleusercontent.com/img/a/AVvXsEhjlKEEK4HR_8GKHNEWl5s0-z5KMBdiiO8D3O8kc8GOBnhXGBjYm3SyTNFqmqf63pbWz3fEcrO5DYFf-VcUYnBaMGSD7u8z2psZQj4Xeo3FHlzU_SQAtdXB5yqzlz0IPyaApkdDQSaLHDKeG4C7pn7vkVaqFGvAN7SqN97CasPMAnESsvlfZh_e0MdR5jOp">
+
+   -After Load Generator Deactive and Cooldown Time (Scale Down From 2 Pods -> 1 Pod)
+
+   <img align = "center" alt = "coding" width = "600" src = "https://blogger.googleusercontent.com/img/a/AVvXsEic9FLCE-rBHlmiQ2qUYx0zWYqePG7oYcHSzkJZ-HaX864d6sBs-9qhPUtPZNTsJwZpDcV2OrL7QS23Xbf11IFKO8FhytodzcvgelzzsopiXFAvZu4FlHOMSb7oEoq2no9DyAKmkGs4OFvM2kS533Lx1xRgFA1DcFcRXuFSIGo8bhUJkoNRzRzAzHwWjZcU">
 
 ## Expected Outcomes
 - The number of pods in the NGINX deployment should increase as CPU usage rises and decrease when the load is reduced.
