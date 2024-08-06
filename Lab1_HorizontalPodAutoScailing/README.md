@@ -55,6 +55,9 @@ In this lab, we will configure the Horizontal Pod Autoscaler (HPA) to automatica
 3.2 **Monitor HPA and Scaling:**
    - Monitor the HPA metrics and the number of pods to observe how the system scales up or down in response to the load.
 
+   -After Load Generator Active
+   <img align = "center" alt = "coding" width = "600" src = "https://blogger.googleusercontent.com/img/a/AVvXsEhjlKEEK4HR_8GKHNEWl5s0-z5KMBdiiO8D3O8kc8GOBnhXGBjYm3SyTNFqmqf63pbWz3fEcrO5DYFfVcUYnBaMGSD7u8z2psZQj4Xeo3FHlzU_SQAtdXB5yqzlz0IPyaApkdDQSaLHDKeG4C7pn7vkVaqFGvAN7SqN97CasPMAnESsvlfZh_e0MdR5jOp">
+
 ## Expected Outcomes
 - The number of pods in the NGINX deployment should increase as CPU usage rises and decrease when the load is reduced.
 - You will observe the HPA's decision-making process through `kubectl` commands, which show how the pod count changes in response to CPU usage.
