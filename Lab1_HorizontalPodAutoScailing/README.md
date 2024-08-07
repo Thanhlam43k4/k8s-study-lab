@@ -55,7 +55,7 @@ In this lab, we will configure the Horizontal Pod Autoscaler (HPA) to automatica
 
    - To do this, you'll start a different Pod to act as a client. The container within the client Pod runs in an infinite loop, sending queries to the frontend service.
 
-      # Run this in a separate terminal so that the load generation continues and you can carry on with the rest of the steps
+   - Run this in a separate terminal so that the load generation continues and you can carry on with the rest of the steps
       
          kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://
          frontend-svc; done"
