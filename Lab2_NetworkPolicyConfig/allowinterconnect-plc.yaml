@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-inter-service-communication
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: customer-deploy,product-deploy,shopping-deploy,mysql-deploy
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: customer-deploy
+    - podSelector:
+        matchLabels:
+          app: product-deploy
+    - podSelector:
+        matchLabels:
+          app: shopping-deploy
+    - podSelector:
+        matchLabels:
+          app: mysql-deploy
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: customer-deploy
+    - podSelector:
+        matchLabels:
+          app: product-deploy
+    - podSelector:
+        matchLabels:
+          app: shopping-deploy
+    - podSelector:
+        matchLabels:
+          app: mysql-deploy
+    ports:
+    - protocol: TCP
+      port: 80
