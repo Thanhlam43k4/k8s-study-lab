@@ -23,7 +23,7 @@ The RBAC API declares four kinds of object : **`Role`**, **`ClusterRoles`**, Rol
 
 - A **`Role`** always sets permissions within a particular namespace; when you create a **`Role`**, you have to specify the namespace it belong in.
 
-- **`ClusterRoles`**, by contrast, is a non-namespaced resource. The resources have different names (**`Role`** and `ClusterRoles`e) because a Kubernetes object always has to be either namespaced or not namespaced; it can't be both.
+- **`ClusterRoles`**, by contrast, is a non-namespaced resource. The resources have different names (**`Role`** and `ClusterRoles`) because a Kubernetes object always has to be either namespaced or not namespaced; it can't be both.
 
 - **`ClusterRoles`** have several uses. You can use a **`ClusterRoles`** to:
 
