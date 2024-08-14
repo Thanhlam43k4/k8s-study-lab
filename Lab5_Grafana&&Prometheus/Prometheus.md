@@ -64,6 +64,11 @@ Prometheus operates based on a **pull model** where it actively scrapes metrics 
 ### 4. Prometheus Architecture
 
 <img alt = "Prometheus Image" align = "center" src = "https://blogger.googleusercontent.com/img/a/AVvXsEgwArAOVS97bSEigr455fuk6Qo9aY_c5grLdRq4sKYhXBhlBy_M56yaHnPT8nhe2OdW76wbvCsN3bWUcN8ZwVwGyd6NBQT5I8HrCWtZYBLp7Dq4JuNBHdzu-I6NNboZZXoxoW6I5MOecYurC_WcCncNy-8tppSC1sSl-NKcjBGayXLwWfpN7Rahh2ukdb6A" width = "600">
+
+
+
+
+
 ## 📚 Resources
 
 - [Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)
