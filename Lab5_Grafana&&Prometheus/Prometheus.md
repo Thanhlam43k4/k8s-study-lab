@@ -40,6 +40,30 @@ Prometheus operates based on a **pull model** where it actively scrapes metrics 
 
 > **Note:** Service discovery is a mechanism that allows services in a distributed system to find and communicate with each other without needing to know each other’s exact addresses beforehand. It’s an essential component in microservices architecture, where services are often deployed on multiple servers and their IP addresses or domain names can change.
 
+### 2. Prometheus Query Language (PromQL)
+
+- **Quering Data**: Prometheus uses its own query language, PromQL, to allow users to query and manipulate the collected metrics. PromQL is powerful and supports various operations, including:
+    - Filtering: Select specific metrics based on labels.
+    - Aggregation: Aggregate data across different dimensions (Eg., sum, average).
+    - Rate Calculations: Calculate the rate of change over time, which is crucial for monitoring metrics like CPU Usage or request rates.
+
+    - Histogram Analysis: Perform operations on histograms and summary metrics.
+- Example. A PromQL query might look like this:
+    - `rate(http_requests_total[5m])` - This query calculates the per-second rate of HTTP requests over the last 5 minutes.
+
+### 3. Exporters
+- **Third-Party Integration**: Prometheus uses exporters to gather metrics from third-party service, systems, and applications. Exporter act as intermediaries, exposing metrics in a format that Prometheus can scrape.    
+-   **Common Exporters**:
+    -   Node Exporter: Collects hardware and OS-level metrics from Linux System.
+    -   BlackBox Exporter: Monitors network endpoint by performing HTTP requests, pings, and DNS lookups.
+    -   MYSQL Exporter: Exposes MySQL server metrics.
+    -   JWT Exporter: Collects metrics from Java application using JMX.
+  
+
+
+### 4. Prometheus Architecture
+
+<img alt = "Prometheus Image" align = "center" src = "https://blogger.googleusercontent.com/img/a/AVvXsEgwArAOVS97bSEigr455fuk6Qo9aY_c5grLdRq4sKYhXBhlBy_M56yaHnPT8nhe2OdW76wbvCsN3bWUcN8ZwVwGyd6NBQT5I8HrCWtZYBLp7Dq4JuNBHdzu-I6NNboZZXoxoW6I5MOecYurC_WcCncNy-8tppSC1sSl-NKcjBGayXLwWfpN7Rahh2ukdb6A" width = "600">
 ## 📚 Resources
 
 - [Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)
