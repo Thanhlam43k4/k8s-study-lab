@@ -1,4 +1,4 @@
-# Lab: RBAC Authorization (Haven't finished, will be updated later)
+# Lab: RBAC Authorization (Haven't finished will be updated later)
 
 ## Concept
 - Role-Based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within your organization.
