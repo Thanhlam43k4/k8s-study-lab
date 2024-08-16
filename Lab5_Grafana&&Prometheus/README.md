@@ -1,5 +1,7 @@
 # Grafana Overview
 
+<img alt = "Grafana Image" align = "center" src = "./Image/Grafana.png" width = "450">
+
 Grafana is a powerful open-source tool used for monitoring and observability, enabling you to visualize metrics, logs, and other data from various sources in customizable dashboards.
 
 ## Key Concepts of Grafana
@@ -49,4 +51,4 @@ Grafana is a powerful open-source tool used for monitoring and observability, en
 
 ---
 
-*This README provides a high-level overview of Grafana's key concepts and common use cases. For more detailed documentation, please refer to the [official Grafana documentation](https://grafana.com/docs/).*
+*This README provides a high![Alt text](image.png)-level overview of Grafana's key concepts and common use cases. For more detailed documentation, please refer to the [official Grafana documentation](https://grafana.com/docs/).*

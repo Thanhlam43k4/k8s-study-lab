@@ -1,5 +1,6 @@
 # Prometheus
 
+<img alt = "Prometheus Logo" align = "center" src = "./Image/Prometheus_Logo.png" width = "450">
 
 
 Prometheus is an open-source systems monitoring and alerting toolkit originally built at SoundCloud. Since its inception in 2012, many companies and organizations have adopted Prometheus, and the project has a very active developer and user community. It is now a standalone open-source project, maintained independently of any company.
