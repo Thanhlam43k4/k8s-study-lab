@@ -82,7 +82,8 @@ Prometheus operates based on a **pull model** where it actively scrapes metrics 
 
 ### 5. Install Prometheus
 
-<img src = "Prometheus Image" align = "center" src = "./Image/dockerImage.png" width = "600">
+
+<img alt = "Prometheus Image" align = "center" src = "./Image/dockerImage.png" width = "450">
 
 - Using docker 
 
