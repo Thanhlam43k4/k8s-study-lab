@@ -92,7 +92,6 @@ Prometheus operates based on a **pull model** where it actively scrapes metrics 
         docker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus
 
 
-![Alt text](image.png)
 ## 📚 Resources
 
 - [Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)
