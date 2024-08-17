@@ -60,6 +60,10 @@ In this lab, we will configure the Horizontal Pod Autoscaler (HPA) to automatica
          kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://
          frontend-svc; done"
 
+
+            docker run -it --rm busybox:1.28 /bin/sh -c "while sleep 0.01; do wget -q -O- http://3.113.17.92; done"
+
+
 3.2 **Monitor HPA and Scaling:**
    - Monitor the HPA metrics and the number of pods to observe how the system scales up or down in response to the load.
 

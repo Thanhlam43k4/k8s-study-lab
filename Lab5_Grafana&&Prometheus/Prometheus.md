@@ -78,6 +78,20 @@ Prometheus operates based on a **pull model** where it actively scrapes metrics 
 
 
 
+
+
+### 5. Install Prometheus
+
+<img src = "Prometheus Image" align = "center" src = "./Image/dockerImage.png" width = "600">
+
+- Using docker 
+
+        docker pull prom/prometheus
+
+        docker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus
+
+
+![Alt text](image.png)
 ## 📚 Resources
 
 - [Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)
