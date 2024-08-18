@@ -38,6 +38,7 @@ This guide provides step-by-step instructions on how to install and configure No
 
 2. Add the following content  to the file
 
+    ```bash
     [Unit]
     Description=Node Exporter
     Wants=network-online.target
@@ -69,7 +70,7 @@ This guide provides step-by-step instructions on how to install and configure No
     sudo systemctl status node_exporter
 
 
-    
+
 ---
 This README.md file provides a clear and structured guide for installing Node Exporter in Prometheus, covering all necessary steps.
 

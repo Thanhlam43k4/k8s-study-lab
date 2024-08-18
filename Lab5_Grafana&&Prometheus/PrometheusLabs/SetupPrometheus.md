@@ -39,6 +39,7 @@ This guide provides instructions on how to install and configure Prometheus for 
 
 2. Add the following content  to the file
 
+    ```bash
     [Unit]
     Description=Prometheus
     Wants=network-online.target
