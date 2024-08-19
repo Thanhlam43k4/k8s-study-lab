@@ -3,7 +3,7 @@
 Some Labs from intermiadiate level to advanced level to comprehend intensively about kubernetes on test/dev development and Cloud Environment.
 
 
-<img alt = "Kuberentes Logo" align = "center" width = "450" src= "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg">
+<img alt = "Kuberentes Logo" align = "center" width = "250" src= "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg">
 
 # Kubernetes (K8s) Overview
 
