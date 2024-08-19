@@ -14,3 +14,9 @@ Steps:
 3. Customize the Helm Chart values to modify the deployment
 
 4. Upgrade and roll back the application using Helm commands.
+
+
+Charts 
+
+
+Helm uses a packaging format called charts. A chart is a collection of files that describe a related set of kubernetes resouces. A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.
