@@ -69,3 +69,11 @@ $ sudo kubeadm init --control-plane-endpoint=<Your_IP>
 
 $ sudo kubeadm token create --print-join-command
 
+
+## Wave CNI command
+$ kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
+
+## Troubleshooting
+
+kubectl set env daemonset/calico-node -n kube-system IP_AUTODETECTION_METHOD=interface=eth.*

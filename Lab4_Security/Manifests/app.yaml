@@ -1,0 +1,26 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      serviceAccountName: build-root
+      containers:
+      - name: my-app-container
+        image: nginx
+        resources:
+            limits:
+              memory: "200Mi"
+              cpu: "200m"
+        ports:
+        - containerPort: 80
