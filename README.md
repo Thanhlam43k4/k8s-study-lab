@@ -29,6 +29,7 @@ Kubernetes, often abbreviated as K8s, is an open-source platform designed to aut
     - [Ingress Controller](#ingress-controller)
     - [Network Policies](#network-policies)
   - [Kubernetes Networking](#kubernetes-networking)
+  - [Blog Note](#blog-note)
   - [Conclusion](#conclusion)
 
 ## Introduction to Kubernetes
@@ -102,6 +103,9 @@ Network Policies define how groups of Pods are allowed to communicate with each 
 ## Kubernetes Networking
 
 Kubernetes uses a flat networking model, meaning that all Pods can communicate with each other by default. Network Policies can be applied to restrict communication based on various criteria. Networking is a critical aspect of Kubernetes, enabling communication between the various components and the services they support.
+
+
+## Blog Note
 
 ## Conclusion
 

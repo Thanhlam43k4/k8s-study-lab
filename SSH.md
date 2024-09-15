@@ -1,0 +1,3 @@
+## Overview SSH (Secure Shell Method)
+
+- SSH with an authorized key allows you to log into a remote machine without needing a password. Instead of entering a password everytime you connect via SSH,you can set up a public and private key pair. The private key is kept on your local machine, and the public key is placed on the remote machine. When you attempt to connect, the remote machine verifies your private key using the public key, granting access if they match.

@@ -3,7 +3,7 @@
 
 **Scheduling pods to specific nodes**
 
-- Now imagine you want to deploy a noew pod that needs a GPU to perform its work. To ask the scheduler to only choose among the nodes that provide a GPU, you'll add a node selector to the pod's YAML. 
+- Now imagine you want to deploy a new pod that needs a GPU to perform its work. To ask the scheduler to only choose among the nodes that provide a GPU, you'll add a node selector to the pod's YAML. 
 
 ## Annotating Pods (Chú thich Pods)
 
