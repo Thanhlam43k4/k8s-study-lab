@@ -78,7 +78,26 @@ A container is a standardized unit of software that packages code and its depend
 - Trong container có 2 cách lưu trữ trên host
 
   - Volume: Tạo ra vùng nhớ ảo và lưu trữ trên host, định nghĩa vùng nhớ đó tên là gì. Khi tạo 1 vùng nhớ riêng như vậy, thì khi chúng ta xóa hay thay đổi cấu hình để tạo ra 1 container mới thì sẽ không bị ảnh hưởng gì tới vùng nhớ ảo.
+
+  *Example*
+
+    ```
+    docker run -d \
+          --name my-container \
+          -v my-volume:/data \ 
+          nginx
   - Bind Mount: Link 1 folder path trên container với 1 thư mục trên host.
+  
+  *Example*
+
+      ```
+      docker run -d \
+           --name my-nginx \
+           -v /path/to/nginx.conf:/etc/nginx/nginx.conf \
+           nginx
+
+      
+
 ### Container Network 
 
 ## Bridge Network
