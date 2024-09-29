@@ -56,7 +56,7 @@ $ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkg
 ##Install kubelet,kubeadm, kubectl 
 
 $ sudo apt update
-$ sudo apt install -y kubelet kubeadm kubectl
+$ sudo apt install -y kubelet kubeadm kubectl   
 $ sudo apt-mark hold kubelet kubeadm kubectl
 
 ##Init cluster

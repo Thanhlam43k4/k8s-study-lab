@@ -7,7 +7,7 @@ Some Labs from intermiadiate level to advanced level to comprehend intensively a
 
 # Kubernetes (K8s) Overview
 
-Kubernetes, often abbreviated as K8s, is an open-source platform designed to automate deploying, scaling, and operating containerized applications. Originally developed by Google, Kubernetes is now maintained by the Cloud Native Computing Foundation (CNCF).
+Kubernetes, often abbreviated as K8s, is an open-source platform designed to automate deploying, scailing, and operating containerized applications. Originally developed by Google, Kubernetes is now maintained by the Cloud Native Computing Foundation (CNCF).
 
 ## Table of Contents
 
@@ -48,7 +48,7 @@ The Master Node is responsible for managing the Kubernetes cluster, coordinating
   
 - **etcd**: A distributed key-value store used to store all the data about the cluster, including configurations and state information.
   
-- **Controller Manager**: Manages the various controllers that regulate the state of the cluster, such as the Replication Controller and the Node Controller.
+- **Controller Manager**: Manages the various controllers that regulate the state of the cluster, such as the Replication Controller and the Node Controller
 
 - **Scheduler**: Assigns work to specific Worker Nodes based on resource availability and requirements.
 
