@@ -110,3 +110,61 @@ Kubernetes uses a flat networking model, meaning that all Pods can communicate w
 ## Conclusion
 
 Kubernetes is a powerful platform for managing containerized applications at scale. Understanding its components and architecture is crucial for effectively deploying and managing your workloads. Whether you're working with a small or large-scale system, Kubernetes provides the tools necessary to ensure your applications are resilient, scalable, and easily managed.
+
+
+- Cấu trúc của bài slide
+
+  1. Khái niệm k8s
+
+  2. k8s architecture
+
+  3. k8s key components (Main)
+
+  4. POC 
+
+- Annotations trong Kubernetes là một cơ chế để gán các thông tin bổ sung (metadata) vào các đối tượng như `Pod,Service,Deployment,ConfigMap` và nhiêu tài nguyên khác. Không giống như labels, không dùng để phân loại hay chọn lọc tài nguyên, `annotations` chứa các thông tin mà bạn có thể muốn liên kết với các đối tượng Kubernetes, nhưng kh được sử dụng cho mục đích lập lịch hay lọc.
+
+![Alt text](image.png)
+
+
+*Authentication*
+
+- Just as with many well-designed REST-based APIs, there are multiple strategies that K8s cam employ for authenticating users. We can think about each of these strategies as belonging to one of three major groups:
+
+  + Basic Authentication: Since the API Server does currently monitor this file for changes, whenever a user is added, removed,or updated, the API Server needs to be restared in order for these changes to take effect
+
+  + X.509 client Certificates
+  
+  + Bearer Tokens
+
+- Trong Kubernetes, context(ngữ cảnh) là một tập hợp các thông tin dùng để xác định cấu hình làm việc hiện tại của `kubectl`.Một context bao gồm ba thành phần chính:
+
+  1. **Cluster**: Thông tin về cụm Kuberentes mà bạn muốn kết nối.
+
+  2. **User**: Thông tin về người dùng hoặc certificate xác thực mà kubectl xác thực mà `kubectl` sử dụng để kết nối tới cụm.
+
+  3. **Namespace**: Không gian làm việc mặc định mà các lệnh `kubectl` sẽ tác động vào
+
+  ![Alt text](image.png)
+
+- `Kube-proxy` ban đầu được triển khai với một proxy ở không gian người dùng (userspace). `kube-proxy` đơn giản là thao tác các quy tắc `iptables` trên mỗi node. Các quy tắc này chuyển hướng lưu lượng được gửi tới một `Service IP` đến bất kỳ một trong các địa chỉ IP điểm cuối (end-point) hỗ trợ phía sau.
+
+- Theo cách này, mỗi Pod trên mỗi node có thể giao tiếp với các Service được định nghĩa thông qua việc daemon `kube-proxy` thao tác các quy tắc iptables.
+
+- Khi bạn gửi lệnh `kubectl apply`, `kube-apiserver` là thành phần đầu tiên tiếp nhận yêu cầu này. Dưới đây là các bước mà `kube-apiserver` thực hiện:
+
+    1. Nhận yêu cầu: `Kube-apiserver` nhận yêu cầu từ `kubectl` để tạo Pod mới với tên `my-pod`.
+
+    2. Xác thực và phân quyền: `Kube-apiserver` kiểm tra xem người dùng có quyền tạo Pod này không thông qua cơ chế RBAC
+
+    3. Cập nhật vào etcd: Sau khi xác thực, `kube-apiserver` ghi thông tin vào Pod `my-pod` vào etcd, nơi lưu trữ trạng thái của cụm K8s.
+-> Lúc này pod được ghi nhận trong hệ thống, nhưng chưa được triển khai trên Node nào.
+
+- Sau khi trạng thái của Pod `my-pod` được lưu vào etcd, kube-controller-manager sẽ theo dõi để đảm bảo rằng Pod này được triển khai theo đúng yêu cầu. Các bước mà `kube-controller-manager`
+
+    1. Phát hiện sự kiện: `Kube-controller-manager` nhận biết rằng một Pod mới cần được tạo ra dựa trên trạng thái đã được lưu trong `etcd`.
+
+    2. Kiểm tra số lượng bản sao: `Controller` kiểm tra xem số lượng Pod được yêu cầu có khớp với số lượng Pod hiện tại không. Nếu Pod chưa tồn tại trên node nào, nó sẽ điều phối để tạo Pod.
+
+    3. Tạo Pod trên Node: `Kube-controller-manager` phối hợp với `kube-scheduler` để chọn Node phù hợp trong cụm, nơi Pod sẽ được triển khai.
+

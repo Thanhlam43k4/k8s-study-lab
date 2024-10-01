@@ -9,7 +9,7 @@ metadata:
   namespace: kube-system
   labels:
     k8s-app: calico-kube-controllers
-spec:
+spec:  
   maxUnavailable: 1
   selector:
     matchLabels:
@@ -4379,7 +4379,7 @@ subjects:
 - kind: ServiceAccount
   name: calico-kube-controllers
   namespace: kube-system
----
+---   
 # Source: calico/templates/calico-node-rbac.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
