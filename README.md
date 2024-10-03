@@ -94,7 +94,12 @@ The Container Runtime is responsible for running containers. Kubernetes is compa
 
 ### Ingress Controller
 
-An Ingress Controller is an application that operates at the edge of your Kubernetes cluster and manages external access to the services inside your cluster, typically HTTP and HTTPS. It provides functionalities such as load balancing, SSL termination, and name-based virtual hosting.
+1. Ingress Controller là thành phần chịu trách nhiệm xử lý các tài nguyên Ingress. Mỗi cụm Kubernetes cần có một Ingress Controller
+
+2. Ingress Resource: Là tài nguyên của Kubernetes chứa các quy tắc định tuyến cho HTTP/HTTPS. Ingress Resource xác định cách thức điều hướng lưu lượng từ bên ngoài vào các dịch vụ nội bộ.
+
+3. Ingress Class: Được sử dụng để xác định loại Ingress Controller sẽ xử lý tài nguyên Ingress cụ thể. Bạn có thể chỉ định class nếu sử dụng nhiều loại Ingress Controller trong cùng một cụm.
+
 
 ### Network Policies
 
@@ -129,7 +134,7 @@ Kubernetes is a powerful platform for managing containerized applications at sca
 
 *Authentication*
 
-- Just as with many well-designed REST-based APIs, there are multiple strategies that K8s cam employ for authenticating users. We can think about each of these strategies as belonging to one of three major groups:
+- Just as with many well-designed REST-based APIs, there are multiple strategies that K8s can employ for authenticating users. We can think about each of these strategies as belonging to one of three major groups:
 
   + Basic Authentication: Since the API Server does currently monitor this file for changes, whenever a user is added, removed,or updated, the API Server needs to be restared in order for these changes to take effect
 
@@ -147,10 +152,44 @@ Kubernetes is a powerful platform for managing containerized applications at sca
 
   ![Alt text](image.png)
 
+
+## KubeProxy
+
 - `Kube-proxy` ban đầu được triển khai với một proxy ở không gian người dùng (userspace). `kube-proxy` đơn giản là thao tác các quy tắc `iptables` trên mỗi node. Các quy tắc này chuyển hướng lưu lượng được gửi tới một `Service IP` đến bất kỳ một trong các địa chỉ IP điểm cuối (end-point) hỗ trợ phía sau.
 
 - Theo cách này, mỗi Pod trên mỗi node có thể giao tiếp với các Service được định nghĩa thông qua việc daemon `kube-proxy` thao tác các quy tắc iptables.
 
+- `kube-proxy` không chịu trách nhiệm cấp phát địa chỉ IP hay đảm bào rằng các Pod có thể giao tiếp với nhau, mà chỉ giúp định tuyến traffic đến đúng dựa trên quy tắc.
+
+## CNI (Container Network Interface)
+
+- CNI lại tập trung vào việc cung cấp mạng cho các Pod và quản lý IP. CNI có nhiệm vụ đảm bảo rằng mọi Pod trong cụm K8s đều có địa chỉ IP riêng và có thể giao tiếp với nhau qua mạng.
+
+- Các nhiệm vụ chính của CNI bao gồm:
+
+    + Cấp phát địa chỉ Ip cho Pod khi nó được tạo ra.
+
+    + Thiết lập kết nối mạng giữa các Pod trên các Node khác nhau trong cụm.
+
+    + Quản lý route mạng và đảm bảo rằng mỗi Pod có thể giao tiếp với các Pod khác trên bất kỳ Node nào.
+
+    + Tùy thuộc vào plugin CNI, nó có thể cung cấp thêm các tính năng bảo mật như `network policies`
+ để kiếm soát traffic giữa các Pod.
+
+- Khi một Pod mới được tạo trong k8s, Calico chịu trách nhiệm cấp phát địa chỉ Ip cho Pod thông qua các quy trình sau:
+
+    + IPAM (IP address Management )
+
+        `Calico IPAM` quản lý không gian địa chỉ và phân bổ IP cho các Pod. Mỗi Pod sẽ được gán một địa chỉ duy nhất, địa chỉ này sẽ tồn tại cho đến khi các Pod bị xóa.
+
+- Khi 2 Pod trên cùng một node cần giao tiếp với nhau, Calico chỉ cần sử dụng cơ chế `local routing`:
+    + Calico thiết lập các route nội bộ trên Node để đảm bảo các Pod có thể giao tiếp trực tiếp với nhau mà kh cần rời khỏi Node.
+
+    + Các địa chỉ Ip của Pod được duy trì cục bộ và kh cần router ra bên ngoài.
+
+  
+
+## KubeApiServer
 - Khi bạn gửi lệnh `kubectl apply`, `kube-apiserver` là thành phần đầu tiên tiếp nhận yêu cầu này. Dưới đây là các bước mà `kube-apiserver` thực hiện:
 
     1. Nhận yêu cầu: `Kube-apiserver` nhận yêu cầu từ `kubectl` để tạo Pod mới với tên `my-pod`.
@@ -168,3 +207,32 @@ Kubernetes is a powerful platform for managing containerized applications at sca
 
     3. Tạo Pod trên Node: `Kube-controller-manager` phối hợp với `kube-scheduler` để chọn Node phù hợp trong cụm, nơi Pod sẽ được triển khai.
 
+
+## Kubelet
+
+- Kubelet giám sát trạng thái của containers bằng cách sử dụng các probe được định nghĩa trong `PodSpec`:
+    + `Liveness probe`: Kiểm tra xem container còn sống hay không. Nếu container chưa phản hồi theo liveness probe, Kubelet sẽ khởi động lại contaienr.
+    + `Readines probe`: Kiểm tra xem container đã sắn sàng phục vụ lưu lượng hay chưa. Nếu chưa sẵn sàng, container sẽ bị loại khỏi danh sách các endpoint của dịch vụ.
+
+- Kubelet liên tục gửi các báo cáo về trạng thái của Pod và Container về `Kube-apiServer`.Những thông tin này bao gồm:
+    + Trạng thái hiện tại của Pod.
+    + Tài nguyên sử dụng của node như CPU,RAM.
+    + Trạng thái sức khỏe của container.
+
+## Kube-scheduler
+
+  - Tóm tắt các bước hoạt động của `kube-scheduler`:
+
+    + Nhận Pod chưa được gán vào Node: `kube-scheduler` nhận thông tin về các Pod chưa được gán vào Node từ kube-apiserver.
+
+    + Thu thập thông tin: `kube-scheduler` thu nhập thông tin về các Node và yêu cầu của Pod.
+
+    + Filter: Loại bỏ các Node không đáp ứng yêu cầu của Pod (CPU, RAM, taints, affinity,...).
+
+    + Score: Đánh giá các Node dựa trên các tiêu chí khác nhau như (tài nguyên,...)
+
+    + Chọn Node và gán Pod vào Node.
+
+  
+
+    
