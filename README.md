@@ -197,7 +197,7 @@ Kubernetes is a powerful platform for managing containerized applications at sca
     2. Xác thực và phân quyền: `Kube-apiserver` kiểm tra xem người dùng có quyền tạo Pod này không thông qua cơ chế RBAC
 
     3. Cập nhật vào etcd: Sau khi xác thực, `kube-apiserver` ghi thông tin vào Pod `my-pod` vào etcd, nơi lưu trữ trạng thái của cụm K8s.
--> Lúc này pod được ghi nhận trong hệ thống, nhưng chưa được triển khai trên Node nào.
+-> Lúc này pod được ghi nhận trong hệ thống, nhưn g chưa được triển khai trên Node nào.
 
 - Sau khi trạng thái của Pod `my-pod` được lưu vào etcd, kube-controller-manager sẽ theo dõi để đảm bảo rằng Pod này được triển khai theo đúng yêu cầu. Các bước mà `kube-controller-manager`
 
